@@ -29,13 +29,10 @@
       <collapse-transition>
         <div class="collapse navbar-collapse show" v-show="showMenu">
           <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-            <div class="search-bar input-group" @click="searchModalVisible = true">
-              <!-- <input type="text" class="form-control" placeholder="Search...">
-              <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
+            <!-- <div class="search-bar input-group" @click="searchModalVisible = true">
               <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
                 <i class="tim-icons icon-zoom-split"></i>
               </button>
-              <!-- You can choose types of search input -->
             </div>
             <modal :show.sync="searchModalVisible"
                    class="modal-search"
@@ -69,7 +66,7 @@
               <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Another one</a>
               </li>
-            </base-dropdown>
+            </base-dropdown> -->
             <base-dropdown tag="li"
                            :menu-on-right="!$rtl.isRTL"
                            title-tag="a"
@@ -77,23 +74,27 @@
                            menu-classes="dropdown-navbar">
               <a slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
                 <div class="photo">
-                  <img src="img/anime3.png">
+                  <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Brown">
                 </div>
                 <b class="caret d-none d-lg-block d-xl-block"></b>
                 <p class="d-lg-none">
-                  Log out
+                  About Steven
                 </p>
               </a>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Profile</a>
+              <li v-for="(url, title) in profiles" class="nav-link">
+                <a v-bind:href="url" class="nav-item dropdown-item" target="_blank">{{title}}</a>
               </li>
-              <li class="nav-link">
+              <div class="dropdown-divider"></div>
+              <li v-for="(url, title) in projects" class="nav-link">
+                <a v-bind:href="url" class="nav-item dropdown-item" target="_blank">{{title}}</a>
+              </li>
+              <!-- <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Settings</a>
               </li>
               <div class="dropdown-divider"></div>
               <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Log out</a>
-              </li>
+              </li> -->
             </base-dropdown>
           </ul>
         </div>
@@ -113,7 +114,7 @@
     computed: {
       routeName() {
         const { name } = this.$route;
-        return this.capitalizeFirstLetter(name);
+        return `HK Weather - ${this.capitalizeFirstLetter(name)}`;
       },
       isRTL() {
         return this.$rtl.isRTL;
@@ -124,7 +125,16 @@
         activeNotifications: false,
         showMenu: false,
         searchModalVisible: false,
-        searchQuery: ''
+        searchQuery: '',
+        profiles: {
+          "Steven Linkedin": "https://www.linkedin.com/in/steven1708/",
+          "Steven Github": "https://github.com/singsing1708",
+        },
+        projects: {
+          "Job-Desks": "https://www.job-desks.hk/",
+          "EPSON eshop": "https://www3.epson.com.hk/en",
+          "88Winn": "https://www.88winn.com"
+        }
       };
     },
     methods: {
