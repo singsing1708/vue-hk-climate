@@ -3,6 +3,7 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 import NotFound from "@/pages/NotFoundPage.vue";
 
 // Admin pages
+const WeatherForecast = () => import(/* webpackChunkName: "dashboard" */"@/pages/WeatherForecast.vue");
 const Dashboard = () => import(/* webpackChunkName: "dashboard" */"@/pages/Dashboard.vue");
 const Profile = () => import(/* webpackChunkName: "common" */ "@/pages/Profile.vue");
 const Notifications = () => import(/* webpackChunkName: "common" */"@/pages/Notifications.vue");
@@ -15,8 +16,13 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/weather-forecast",
     children: [
+      {
+        path: "weather-forecast",
+        name: "weather forecast",
+        component: WeatherForecast
+      },
       {
         path: "dashboard",
         name: "dashboard",

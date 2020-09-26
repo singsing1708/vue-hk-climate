@@ -114,6 +114,7 @@
     "title": "Creative Tim",
     "shortTitle": "CT",
     "dashboard": "dashboard",
+    "weatherForecast": "Weather Forecast",
     "icons": "Icons",
     "maps": "Maps",
     "notifications": "Notifications",
