@@ -1,22 +1,57 @@
 <template>
-  <v-timeline>
-    <v-timeline-item>timeline item</v-timeline-item>
-    <v-timeline-item class="text-right">timeline item</v-timeline-item>
-    <v-timeline-item>timeline item</v-timeline-item>
+  <v-timeline class="weather-timeline">
+    <v-timeline-item
+      v-for="(weatherForecast, key) in weatherForecasts"
+      :key="key"
+      color="purple lighten-2"
+      fill-dot
+      small
+    >
+      <template v-slot:opposite>
+        <div class="text-center">{{formatDate(weatherForecast.forecastDate)}}</div>
+      </template>
+      <v-card class="elevation-2">
+        <v-card-title class="headline">
+          {{weatherForecast.week}}
+        </v-card-title>
+        <v-card-text>
+          <div>{{tempatureDisplay(weatherForecast)}}</div>
+          <div>{{weatherForecast.forecastWeather}}</div>
+          <br/>
+          <div>{{$t('weatherTimeline.wind')}} {{weatherForecast.forecastWind}}</div>
+        </v-card-text>
+      </v-card>
+    </v-timeline-item>
+  </v-timeline>
+
   </v-timeline>
 </template>
 <script>
+import { axios } from '@/plugins/axios'
+import moment from 'moment'
+
 export default {
   name: "weather-timeline",
   data () {
     return {
-      info: null
+      weatherForecasts: null
+    }
+  },
+  methods: {
+    formatDate(dateString){
+      return moment(dateString, "YYYYMMDD").format("DD-MMM-YYYY")
+    },
+    tempatureDisplay(weatherForecast){
+      return `${weatherForecast.forecastMintemp.value}${weatherForecast.forecastMintemp.unit}~${weatherForecast.forecastMaxtemp.value}${weatherForecast.forecastMaxtemp.unit}`
     }
   },
   mounted () {
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.info = response))
+      .get('https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en')
+      .then(response => {
+        console.log(response.data.weatherForecast);
+        this.weatherForecasts = response.data.weatherForecast
+      })
   }
 };
 </script>

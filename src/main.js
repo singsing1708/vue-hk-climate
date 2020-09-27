@@ -18,9 +18,14 @@ import App from "./App";
 // TIP: change to import router from "./router/starterRouter"; to start with a clean layout
 import router from "./router/index";
 
-import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
 import './registerServiceWorker'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+import VueAxios from './plugins/axios'
+import BlackDashboard from "./plugins/blackDashboard";
+
+
+Vue.use(VueAxios)
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
 Vue.use(RouterPrefetch);
@@ -29,5 +34,6 @@ Vue.use(RouterPrefetch);
 new Vue({
   router,
   i18n,
+  vuetify,
   render: h => h(App)
 }).$mount("#app");

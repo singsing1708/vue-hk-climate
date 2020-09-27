@@ -110,6 +110,9 @@
       }
     ]
   },
+  "weatherTimeline": {
+    "wind": "Wind:"
+  },
   "sidebar": {
     "title": "Creative Tim",
     "shortTitle": "CT",

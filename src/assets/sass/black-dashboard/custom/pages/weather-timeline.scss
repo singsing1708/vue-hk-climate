@@ -1,0 +1,8 @@
+.v-timeline.weather-timeline:before {
+  background: #2bffc6;
+  right: calc(50% - 1px);
+}
+
+.v-timeline.weather-timeline .v-timeline-item__opposite {
+  color: white;
+}
