@@ -7,6 +7,6 @@ https://github.com/creativetimofficial/vue-black-dashboard.git
 
 # Using
 * vue@2.6.11
-* <a name="https://github.com/creativetimofficial/vue-black-dashboard.git">vue-black-dashboard</name>
+* [vue-black-dashboard](https://github.com/creativetimofficial/vue-black-dashboard.git)
 * vuetify
-* *axios
+* axios
