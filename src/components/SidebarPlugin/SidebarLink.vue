@@ -30,6 +30,7 @@ export default {
   props: {
     name: String,
     icon: String,
+    clickFunction: Function,
     tag: {
       type: String,
       default: "router-link"
@@ -37,6 +38,9 @@ export default {
   },
   methods: {
     hideSidebar() {
+      if (this.clickFunction != undefined) {
+        this.clickFunction()
+      }
       if (this.autoClose) {
         this.$sidebar.displaySidebar(false);
       }

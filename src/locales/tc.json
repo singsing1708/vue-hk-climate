@@ -124,7 +124,7 @@
     "title": "Creative Tim",
     "shortTitle": "CT",
     "dashboard": "dashboard",
-    "weatherForecast": "Weather Forecast",
+    "weatherForecast": "天氣預報",
     "tempatureForecast": "Tempature Forecast",
     "icons": "Icons",
     "maps": "Maps",
@@ -133,6 +133,6 @@
     "tableList": "Table List",
     "typography": "Typography",
     "rtlSupport": "RTL Support",
-    "changeLanguage": "中文"
+    "changeLanguage": "English"
   }
 }

@@ -47,12 +47,15 @@ export default {
   },
   mounted () {
     axios
-      .get('https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en')
+      .get(`https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=${this.$i18n.locale}`)
       .then(response => {
         console.log(response.data.weatherForecast);
         this.weatherForecasts = response.data.weatherForecast
       })
-  }
+  },
+  beforeMount(){
+    console.log(123);
+ },
 };
 </script>
 <style>
