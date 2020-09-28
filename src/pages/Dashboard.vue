@@ -234,7 +234,7 @@
         return this.$rtl.isRTL;
       },
       bigLineChartCategories() {
-        return this.$t('dashboard.chartCategories');
+        return this.$t('tempatureForecast.chartCategories');
       }
     },
     methods: {

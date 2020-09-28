@@ -113,11 +113,19 @@
   "weatherTimeline": {
     "wind": "Wind:"
   },
+  "tempatureForecast": {
+    "chartCategories": [
+      "Max Tempature",
+      "Min Tempature"
+    ],
+    "title": "Tempature Forecast"
+  },
   "sidebar": {
     "title": "Creative Tim",
     "shortTitle": "CT",
     "dashboard": "dashboard",
     "weatherForecast": "Weather Forecast",
+    "tempatureForecast": "Tempature Forecast",
     "icons": "Icons",
     "maps": "Maps",
     "notifications": "Notifications",
