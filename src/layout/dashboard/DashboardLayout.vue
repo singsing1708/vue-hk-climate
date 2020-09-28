@@ -3,7 +3,7 @@
     <side-bar>
       <template slot="links">
         <sidebar-link to="/weather-forecast" :name="$t('sidebar.weatherForecast')" icon="fas fa-sun"/>
-        <sidebar-link to="/tempature-forecast" :name="$t('sidebar.tempatureForecast')" icon="fas fa-sun"/>
+        <sidebar-link to="/tempature-forecast" :name="$t('sidebar.tempatureForecast')" icon="fa fa-thermometer-three-quarters"/>
         <sidebar-link to="/dashboard" :name="$t('sidebar.dashboard')" icon="fas fa-sun"/>
         <sidebar-link to="/icons" :name="$t('sidebar.icons')" icon="tim-icons icon-atom"/>
         <sidebar-link to="/maps" :name="$t('sidebar.maps')" icon="tim-icons icon-pin"/>

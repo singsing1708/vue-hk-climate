@@ -47,6 +47,8 @@
 </template>
 <script>
   import LineChart from '@/components/Charts/LineChart';
+  import { axios } from '@/plugins/axios'
+  import moment from 'moment'
   import * as chartConfigs from '@/components/Charts/config';
   import config from '@/config';
 
@@ -58,13 +60,11 @@
       return {
         bigLineChart: {
           allData: [
-            [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
-            [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120]
           ],
           activeIndex: 0,
           chartData: {
             datasets: [{ }],
-            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            labels: [],
           },
           extraOptions: chartConfigs.purpleChartOptions,
           gradientColors: config.colors.primaryGradient,
@@ -102,11 +102,24 @@
             pointRadius: 4,
             data: this.bigLineChart.allData[index]
           }],
-          labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+          labels: this.bigLineChart.chartData.labels,
         }
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
+      },
+      setupChartData(weatherForecasts) {
+        console.log(weatherForecasts)
+        let maxTempatures = []
+        let minTempatures = []
+        weatherForecasts.forEach(forcastData => {
+          maxTempatures.push(forcastData.forecastMaxtemp.value)
+          minTempatures.push(forcastData.forecastMintemp.value)
+          this.bigLineChart.chartData.labels.push(moment(forcastData.forecastDate, "YYYYMMDD").format("DD-MMM"))
+        })
+        this.bigLineChart.allData.push(maxTempatures)
+        this.bigLineChart.allData.push(minTempatures)
+        this.bigLineChart.extraOptions.scales.yAxes[0].ticks.suggestedMin = 10
       }
     },
     mounted() {
@@ -115,7 +128,12 @@
         this.i18n.locale = 'ar';
         this.$rtl.enableRTL();
       }
-      this.initBigChart(0);
+      axios
+        .get('https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en')
+        .then(response => {
+          this.setupChartData(response.data.weatherForecast)
+          this.initBigChart(0);
+        })
     },
     beforeDestroy() {
       if (this.$rtl.isRTL) {
