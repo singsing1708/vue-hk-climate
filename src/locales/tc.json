@@ -111,27 +111,27 @@
     ]
   },
   "weatherTimeline": {
-    "wind": "Wind:"
+    "windForce": "風力:"
   },
   "tempatureForecast": {
     "chartCategories": [
-      "Max Tempature",
-      "Min Tempature"
+      "最高溫度",
+      "最低溫度"
     ],
-    "title": "Tempature Forecast"
+    "title": "溫度預報"
   },
   "sidebar": {
     "title": "Creative Tim",
     "shortTitle": "CT",
-    "dashboard": "dashboard",
+    "dashboard": "儀表板",
     "weatherForecast": "天氣預報",
-    "tempatureForecast": "Tempature Forecast",
-    "icons": "Icons",
-    "maps": "Maps",
-    "notifications": "Notifications",
-    "userProfile": "User Profile",
-    "tableList": "Table List",
-    "typography": "Typography",
+    "tempatureForecast": "溫度預報",
+    "icons": "圖示",
+    "maps": "地圖",
+    "notifications": "通知事項",
+    "userProfile": "用戶資料",
+    "tableList": "表格清單",
+    "typography": "版式",
     "rtlSupport": "RTL Support",
     "changeLanguage": "English"
   }

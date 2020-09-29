@@ -111,7 +111,7 @@
     ]
   },
   "weatherTimeline": {
-    "wind": "Wind:"
+    "windForce": "Wind Force:"
   },
   "tempatureForecast": {
     "chartCategories": [

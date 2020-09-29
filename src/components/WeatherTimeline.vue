@@ -18,7 +18,7 @@
           <div>{{tempatureDisplay(weatherForecast)}}</div>
           <div>{{weatherForecast.forecastWeather}}</div>
           <br/>
-          <div>{{$t('weatherTimeline.wind')}} {{weatherForecast.forecastWind}}</div>
+          <div>{{$t('weatherTimeline.windForce')}} {{weatherForecast.forecastWind}}</div>
         </v-card-text>
       </v-card>
     </v-timeline-item>
