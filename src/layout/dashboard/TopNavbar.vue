@@ -114,7 +114,7 @@
     computed: {
       routeName() {
         const { name } = this.$route;
-        return `HK Weather - ${this.capitalizeFirstLetter(name)}`;
+        return this.capitalizeFirstLetter(name);
       },
       isRTL() {
         return this.$rtl.isRTL;

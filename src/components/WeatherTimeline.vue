@@ -34,7 +34,8 @@ export default {
   name: "weather-timeline",
   data () {
     return {
-      weatherForecasts: null
+      weatherForecasts: null,
+      language: this.$i18n.locale
     }
   },
   methods: {
@@ -47,14 +48,20 @@ export default {
   },
   mounted () {
     axios
-      .get(`https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=${this.$i18n.locale}`)
+      .get(`https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=${this.language}`)
       .then(response => {
-        console.log(response.data.weatherForecast);
         this.weatherForecasts = response.data.weatherForecast
       })
   },
-  beforeMount(){
-    console.log(123);
+  beforeUpdate(){
+    if (this.language != this.$i18n.locale) {
+      this.language = this.$i18n.locale
+      axios
+        .get(`https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=${this.language}`)
+        .then(response => {
+          this.weatherForecasts = response.data.weatherForecast
+        })
+    }
  },
 };
 </script>
